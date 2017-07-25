@@ -14,8 +14,8 @@ ano = ''
 per = ''
 
 class boletim(QDialog):
-	def __init__ (self,parent=None):
-		super(boletim,self).__init__(parent)
+	def _init_ (self,parent=None):
+		super(boletim,self)._init_(parent)
 		uic.loadUi('tela3.ui',self)
 		global ano, per
 		self.meuboletim.addItem('Período: ' + ano + '.' + per)
@@ -38,4 +38,33 @@ class boletim(QDialog):
 		t=SUAP(self)
 		t.activateWindow()
 		self.hide()
+		t.exec_()
+
+class mails(QDialog):
+	def _init_ (self,parent=None):
+		super(mails,self)._init_(parent)
+		uic.loadUi('tela4.ui',self)
+		global ano, per
+		self.back.clicked.connect(self.voltar)
+		self.end.clicked.connect(self.close)
+		self.meuscontatos.addItem('Período: ' + ano + '.' + per)
+		resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per), auth=(login,senha))
+		if resp.status_code == 200:
+			notas = resp.json()
+			for x in notas:
+				cod=str(x['codigo_diario'])
+				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod, auth=(login,senha))
+				if resp.status_code == 200:
+					turma = resp.json()
+					for x in turma['professores']:
+						self.meuscontatos.addItem('Nome: ' + x['nome'] + '\nEmail: ' + x['email'] + '\n')
+	
+	def close(self):
+		sys.exit()
+
+	def voltar(self):
+		t=SUAP(self)
+		t.activateWindow()
+		self.hide()
+		t.exec_()
 		t.exec_()
