@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../ifrn/images.png</normaloff>../ifrn/images.png</iconset>
+    <normaloff>images.png</normaloff>images.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -106,7 +106,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../ifrn/image_preview.jpg</pixmap>
+    <pixmap>image_preview.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

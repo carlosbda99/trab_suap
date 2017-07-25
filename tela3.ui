@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../ifrn/images.png</normaloff>../ifrn/images.png</iconset>
+    <normaloff>images.png</normaloff>images.png</iconset>
   </property>
   <widget class="QListWidget" name="meuboletim">
    <property name="geometry">
