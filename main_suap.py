@@ -7,6 +7,8 @@ import requests
 from getpass import getpass
 from os import system
 from time import sleep
+from datetime import datetime
+hora = datetime.now()
 op = 0
 login = ''
 senha = ''
@@ -23,23 +25,23 @@ class boletim(QDialog):
 		self.meuboletim.addItem('Período: ' + ano + '.' + per)
 		self.back.clicked.connect(self.voltar)
 		self.end.clicked.connect(self.close)
-		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per)
+		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per) + ' --> ' + str(hora.now())
 		log['log'][-1][login][0]['enviados'].append(link)
 		resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per), auth=(login,senha))
 		if resp.status_code == 200:
 			notas = resp.json()
 			for x in notas:
 				self.meuboletim.addItem(x['disciplina'])
-				var1 = x['disciplina']
+				var1 = x['disciplina'] + ' ' + str(hora.now())
 				log['log'][-1][login][0]['recebidos'].append(var1)
 				self.meuboletim.addItem('\t\tNota 1: ' + str(x['nota_etapa_1']['nota']) +'\t\t\tNota 2: ' + str(x['nota_etapa_2']['nota']))
-				var2 = '\t\tNota 1: ' + str(x['nota_etapa_1']['nota']) +'\t\t\tNota 2: ' + str(x['nota_etapa_2']['nota'])
+				var2 = 'Nota 1: ' + str(x['nota_etapa_1']['nota']) +'        Nota 2: ' + str(x['nota_etapa_2']['nota']) + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['recebidos'].append(var2)
 				self.meuboletim.addItem('\t\tNota 3: ' + str(x['nota_etapa_3']['nota']) +'\t\t\tNota 4: ' + str(x['nota_etapa_4']['nota']))
-				var3 = '\t\tNota 3: ' + str(x['nota_etapa_3']['nota']) +'\t\t\tNota 4: ' + str(x['nota_etapa_4']['nota'])
+				var3 = 'Nota 3: ' + str(x['nota_etapa_3']['nota']) +'        Nota 4: ' + str(x['nota_etapa_4']['nota']) + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['recebidos'].append(var3)
 				self.meuboletim.addItem('\t\tMédia Final: '+ str(x['media_final_disciplina']))
-				var4 = '\t\tMédia Final: '+ str(x['media_final_disciplina'])
+				var4 = 'Média Final: '+ str(x['media_final_disciplina']) + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['recebidos'].append(var4)
 	def close(self):
 		json.dump(log,arq,indent=4)
@@ -60,21 +62,21 @@ class mails(QDialog):
 		self.back.clicked.connect(self.voltar)
 		self.end.clicked.connect(self.close)
 		self.meuscontatos.addItem('Período: ' + ano + '.' + per)
-		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per)
+		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per) + ' --> ' + str(hora.now())
 		log['log'][-1][login][0]['enviados'].append(link)
 		resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per), auth=(login,senha))
 		if resp.status_code == 200:
 			notas = resp.json()
 			for x in notas:
 				cod=str(x['codigo_diario'])
-				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod
+				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['enviados'].append(link)
 				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod, auth=(login,senha))
 				if resp.status_code == 200:
 					turma = resp.json()
 					for x in turma['professores']:
 						self.meuscontatos.addItem('Nome: ' + x['nome'] + '\nEmail: ' + x['email'] + '\n')
-						var = 'Nome: ' + x['nome'] + '\nEmail: ' + x['email'] + '\n'
+						var = 'Nome: ' + x['nome'] + '\nEmail: ' + x['email'] + '\n' + ' --> ' + str(hora.now())
 						log['log'][-1][login][0]['recebidos'].append(var)
 	
 	def close(self):
@@ -103,7 +105,7 @@ class SUAP(QDialog):
 		global ano, per, login, senha, notas
 		ano = self.ano.text()
 		per = self.periodo.text()
-		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per)
+		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per) + ' --> ' + str(hora.now())
 		log['log'][-1][login][0]['enviados'].append(link)
 		resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per), auth=(login,senha))
 		if resp.status_code == 200:
@@ -118,7 +120,7 @@ class SUAP(QDialog):
 		global ano, per, login, senha, notas
 		ano = self.ano.text()
 		per = self.periodo.text()
-		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per)
+		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per) + ' --> ' + str(hora.now())
 		log['log'][-1][login][0]['enviados'].append(link)
 		resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per), auth=(login,senha))
 		if resp.status_code == 200:
@@ -138,7 +140,7 @@ class SUAP(QDialog):
 		global ano, per, login, senha, notas
 		ano = self.ano.text()
 		per = self.periodo.text()
-		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per)
+		link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per) + ' --> ' + str(hora.now())
 		log['log'][-1][login][0]['enviados'].append(link)
 		resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/%s/%s/'%(ano,per), auth=(login,senha))
 		if resp.status_code == 200:
@@ -154,7 +156,7 @@ class SUAP(QDialog):
 		for x in notas:
 			if x!='detail':
 				cod=str(x['codigo_diario'])
-				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod
+				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['enviados'].append(link)
 				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod, auth=(login,senha))
 				if resp.status_code == 200:
@@ -164,12 +166,13 @@ class SUAP(QDialog):
 					system ('mkdir -p %s-%s/'%(ano,per) + diretorio )
 					for x in turma['materiais_de_aula']:
 						if x['url'][0]=='/':
-							link = 'https://suap.ifrn.edu.br' +(x['url'])
+							link = 'https://suap.ifrn.edu.br' +(x['url']) + ' --> ' + str(hora.now())
 							log['log'][-1][login][0]['recebidos'].append(link)
 							system ('wget -P ' + '%s-%s/'%(ano,per)+ diretorio + ' ' + link)
 						else:
 							link = x['url']
-							log['log'][-1][login][0]['recebidos'].append(link)
+							link2 =  x['url'] + ' --> ' + str(hora.now())
+							log['log'][-1][login][0]['recebidos'].append(link2)
 							system ('echo ' + link + ' > %s-%s/'%(ano,per) + diretorio + '/Link de materiais')
 					self.mensagem.setText('Realizado')
 				elif resp.status_code == 404:
@@ -187,7 +190,7 @@ class Main(QWidget):
 		login = self.matricula.text()
 		log['log'].append({login:[{'recebidos':[],'enviados':[]}]})
 		senha = self.senha.text()
-		link = 'https://suap.ifrn.edu.br/api/v2/autenticacao/token/?format=json'
+		link = 'https://suap.ifrn.edu.br/api/v2/autenticacao/token/?format=json' + ' --> ' + str(hora.now())
 		log['log'][-1][login][0]['enviados'].append(link)
 		resp = requests.post('https://suap.ifrn.edu.br/api/v2/autenticacao/token/?format=json',json={'username': login, 'password': senha})
 
