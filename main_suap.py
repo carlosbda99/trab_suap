@@ -114,7 +114,7 @@ class SUAP(QDialog):
 			self.hide()
 			e.exec_()
 		else:
-			self.mensagem.setText('Ocorreu um erro, verifique os dados e tente novamente')
+			self.mensagem.setText('Erro, tente novamente')
 
 	def emails(self):
 		global ano, per, login, senha, notas
@@ -129,7 +129,7 @@ class SUAP(QDialog):
 			self.hide()
 			e.exec_()
 		else:
-			self.mensagem.setText('Ocorreu um erro, verifique os dados e tente novamente')
+			self.mensagem.setText('Erro, tente novamente')
 
 	def close(self):
 		json.dump(log,arq,indent=4)
@@ -146,7 +146,7 @@ class SUAP(QDialog):
 		if resp.status_code == 200:
 			notas = resp.json()
 		else:
-			self.mensagem.setText('Ocorreu um erro, verifique os dados e tente novamente')
+			self.mensagem.setText('Erro, tente novamente')
 			notas = resp.json()
 		return notas
 
@@ -177,7 +177,7 @@ class SUAP(QDialog):
 							system ('echo ' + link + ' > %s-%s/'%(ano,per) + diretorio + '/Link de materiais')
 					self.mensagem.setText('Download realizado')
 				elif resp.status_code == 404:
-					self.mensagem.setText('Ocorreu um erro, tente novamente')
+					self.mensagem.setText('Erro, tente novamente')
 		return
 
 class Main(QWidget):
