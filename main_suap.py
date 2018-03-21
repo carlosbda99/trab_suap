@@ -69,16 +69,16 @@ class mails(QDialog):
 			notas = resp.json()
 			for x in notas:
 				cod=str(x['codigo_diario'])
-				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod + ' --> ' + str(hora.now())
+				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/%s/'%cod + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['enviados'].append(link)
-				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod, auth=(login,senha))
+				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/%s/'%cod, auth=(login,senha))
 				if resp.status_code == 200:
 					turma = resp.json()
 					for x in turma['professores']:
 						self.meuscontatos.addItem('Nome: ' + x['nome'] + '\nEmail: ' + x['email'] + '\n')
 						var = 'Nome: ' + x['nome'] + '\nEmail: ' + x['email'] + '\n' + ' --> ' + str(hora.now())
 						log['log'][-1][login][0]['recebidos'].append(var)
-	
+
 	def close(self):
 		json.dump(log,arq,indent=4)
 		arq.close()
@@ -156,9 +156,9 @@ class SUAP(QDialog):
 		for x in notas:
 			if x!='detail':
 				cod=str(x['codigo_diario'])
-				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod + ' --> ' + str(hora.now())
+				link = 'https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/%s/'%cod + ' --> ' + str(hora.now())
 				log['log'][-1][login][0]['enviados'].append(link)
-				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turmas-virtuais/%s/'%cod, auth=(login,senha))
+				resp = requests.get('https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/%s/'%cod, auth=(login,senha))
 				if resp.status_code == 200:
 					turma = resp.json()
 					diretorio = x['disciplina'].replace('/','-').split(' ')
@@ -166,18 +166,19 @@ class SUAP(QDialog):
 					system ('mkdir -p %s-%s/'%(ano,per) + diretorio )
 					for x in turma['materiais_de_aula']:
 						if x['url'][0]=='/':
-							link = 'https://suap.ifrn.edu.br' +(x['url']) + ' --> ' + str(hora.now())
+							link = 'https://suap.ifrn.edu.br' +(x['url'])
+							link2 = 'https://suap.ifrn.edu.br' +(x['url']) + ' --> ' + str(hora.now())
 							log['log'][-1][login][0]['recebidos'].append(link)
-							system ('wget -P ' + '%s-%s/'%(ano,per)+ diretorio + ' ' + link)
+							system ('wget -N -P ' + '%s-%s/'%(ano,per)+ diretorio + ' ' + link)
 						else:
 							link = x['url']
 							link2 =  x['url'] + ' --> ' + str(hora.now())
 							log['log'][-1][login][0]['recebidos'].append(link2)
 							system ('echo ' + link + ' > %s-%s/'%(ano,per) + diretorio + '/Link de materiais')
-					self.mensagem.setText('Realizado')
+					self.mensagem.setText('Download realizado')
 				elif resp.status_code == 404:
 					self.mensagem.setText('Ocorreu um erro, tente novamente')
-		return 
+		return
 
 class Main(QWidget):
 	def __init__(self):
@@ -206,4 +207,4 @@ if __name__ == '__main__':
 	root = QApplication(sys.argv)
 	app = Main()
 	app.show()
-	root.exec_() 
+	root.exec_()

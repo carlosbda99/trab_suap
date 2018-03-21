@@ -1,0 +1,47 @@
+{
+    "log": [
+        {
+            "20162014050005": [
+                {
+                    "recebidos": [
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/NetworkManager.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/keys-galileu-prof-ssh-servidor-ASA.7z",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Exercicio_SSH.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/SSH_4JNkAuC.pdf",
+                        "https://linuxcontainers.org/lxc/getting-started/ --> 2018-03-21 09:36:25.946427",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/alunos-lista.txt",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Atividade_Pratica_-_ACAD_02.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Ferramenta_de_Projeto_-_Aula_4_-_Layers.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Atividade_Pratica_-_ACAD_01.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Ferramenta_de_Projeto_-_Aula_2_-_Projeto_Arquitet\u00f4nico.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Ferramenta_de_Projeto_-_Aula_1_-_Projeto_Auxiliado_por_Computador_-_CAD.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/RSF_Campo_Magn\u00e9tico_v6.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/RSF_Campo_El\u00e9trico_v10.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Redes_sem_Fio_v2_Fc34RcF.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/RSF_SE_Vetores_v8.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Comandos20180226.txt",
+                        "http://laica.ifrn.edu.br/~ninho/roteamento/c1700-adventerprisek9-mz.124-25b.bin --> 2018-03-21 09:36:28.627901",
+                        "http://framework.sourceforge.net/pics/ufpr/Projeto_TE815.pdf --> 2018-03-21 09:36:28.631320",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Planejamento_Roteamento_Internet_-_2018.1.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Ementa-RoteamentoInternet.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/2a__Lista_Leis_de_Kirchoff_com_gabarito.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/Lista_Lei_ohm2018_atualizado.pdf",
+                        "https://suap.ifrn.edu.br/media/edu/material_aula/apostila_de_Eletricidade_B\u00e1sica_CC_sp7qU64.docx"
+                    ],
+                    "enviados": [
+                        "https://suap.ifrn.edu.br/api/v2/autenticacao/token/?format=json --> 2018-03-21 09:36:16.547056",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/boletim/2018/1/ --> 2018-03-21 09:36:23.890700",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36086/ --> 2018-03-21 09:36:24.656045",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36095/ --> 2018-03-21 09:36:26.001733",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36083/ --> 2018-03-21 09:36:26.815639",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36085/ --> 2018-03-21 09:36:27.457446",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36087/ --> 2018-03-21 09:36:28.054624",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36089/ --> 2018-03-21 09:36:28.726457",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/37639/ --> 2018-03-21 09:36:29.292050",
+                        "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/turma-virtual/36084/ --> 2018-03-21 09:36:29.729180"
+                    ]
+                }
+            ]
+        }
+    ]
+}
